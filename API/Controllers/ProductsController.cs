@@ -1,17 +1,14 @@
-using Infrastructure.Data;
 using Core.Entities;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Core.Interfaces;
 using Core.Specifications;
 using API.Dtos;
 using AutoMapper;
+using API.Errors;
 
 namespace API.Controllers
-{
-    [ApiController]
-    [Route("api/[controller]")]
-    public class ProductsController : ControllerBase
+{    
+    public class ProductsController : BaseApiController
     {      
         private readonly IGenericRepository<Product> _productsRepo;
         private readonly IGenericRepository<ProductBrand> _productBrandsRepo;
@@ -46,6 +43,8 @@ namespace API.Controllers
             var spec = new ProductsWithTypesAndBrandsSpecification(id);
 
             var product = await _productsRepo.GetEntityWithSpec(spec);
+
+            if(product == null) return NotFound(new ApiResponse(404));
 
             return  _mapper.Map<Product, ProductToReturnDto>(product);            
         }
