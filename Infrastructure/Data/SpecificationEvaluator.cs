@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Core.Entities;
 using Core.Specifications;
 using Microsoft.EntityFrameworkCore;
@@ -37,6 +33,8 @@ namespace Infrastructure.Data
             }
 
             query = spec.Includes.Aggregate(query, (current, include) => current.Include(include));
+
+            Console.Write(query);
 
             return query;
         }
