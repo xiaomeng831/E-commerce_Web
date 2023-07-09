@@ -15,14 +15,14 @@ export class CheckoutAddressComponent implements OnInit{
     console.log(this.checkoutForm)
   }
 
-  // constructor(private accountService: AccountService, private toastr: ToastrService) {}
+  constructor(private accountService: AccountService, private toastr: ToastrService) {}
 
-  // saveUserAddress() {
-  //   this.accountService.updateUserAddress(this.checkoutForm?.get('addressForm')?.value).subscribe({
-  //     next: () => {
-  //       this.toastr.success('Address saved');
-  //       this.checkoutForm?.get('addressForm')?.reset(this.checkoutForm?.get('addressForm')?.value);
-  //     }
-  //   })
-  // }
+  saveUserAddress() {
+    this.accountService.updateUserAddress(this.checkoutForm?.get('addressForm')?.value).subscribe({
+      next: () => {
+        this.toastr.success('Address saved');
+        this.checkoutForm?.get('addressForm')?.reset(this.checkoutForm?.get('addressForm')?.value);
+      }
+    })
+  }
 }

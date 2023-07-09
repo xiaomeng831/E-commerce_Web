@@ -26,6 +26,5 @@ namespace API.Errors
                 .SingleOrDefaultAsync(u => u.Email == user.FindFirstValue(ClaimTypes.Email));
         }
 
-
     }
 }

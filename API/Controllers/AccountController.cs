@@ -62,7 +62,7 @@ namespace API.Controllers
 
         [Authorize]
         [HttpPut("address")]
-        public async Task<ActionResult<Address>>UpdatetUserAddress(AddressDto address)
+        public async Task<ActionResult<AddressDto>>UpdatetUserAddress(AddressDto address)
         {
             var user = await _userManager.FindUserByClaimsPrincipleWithAddress(User);
 
